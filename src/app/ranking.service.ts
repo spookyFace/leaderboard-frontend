@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Ranking} from './ranking';
-import 'rxjs/add/operator/map';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class RankingService {
@@ -13,6 +14,12 @@ export class RankingService {
   }
 
   findAll(): Observable<Ranking[]> {
-    return this.httpClient.get<Ranking[]>(this.url);
+    return this.httpClient
+      .get<Ranking[]>(this.url);
+  }
+
+  create(name: string): Observable<Ranking> {
+    return this.httpClient
+      .post<Ranking>(this.url, name);
   }
 }

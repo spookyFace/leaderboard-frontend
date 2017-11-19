@@ -3,6 +3,13 @@
 <div>
   Rankings:
 </div>
-<div *ngFor="let ranking of rankings$ | async">
+<div *ngFor="let ranking of rankings">
   {{ranking.name}}
 </div>
+
+<div>
+  <label>Create ranking</label>
+  <input [(ngModel)]="rankingName">
+  <button (click)="createRanking()">Create ranking</button>
+</div>
+
